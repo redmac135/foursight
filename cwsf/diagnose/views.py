@@ -97,12 +97,13 @@ class GenelabView(View):
             log2FC, p, volcano_colors = plotVolcano(results)
 
             comp = [
-                {"x": log_samples[i], "y": log_control[i]}
+                {"x": float(log_samples[i]), "y": float(log_control[i])}
                 for i in range(len(log_samples))
             ]
+            print(comp)
             comp_labels = [geneNames[i] for i in range(len(comp))]
 
-            volcano = [{"x": log2FC[i], "y": p[i]} for i in range(len(log2FC))]
+            volcano = [{"x": float(log2FC[i]), "y": float(p[i])} for i in range(len(log2FC))]
             volcano_labels = [geneNames[i] for i in range(len(volcano))]
 
             matrix_colors = linear_color_map(results).tolist()
@@ -186,10 +187,10 @@ def genelab_file(request, filename: str = ""):
     log_samples, log_control, comp_colors = plotComparison(results)
     log2FC, p, volcano_colors = plotVolcano(results)
 
-    comp = [{"x": log_samples[i], "y": log_control[i]} for i in range(len(log_samples))]
+    comp = [{"x": float(log_samples[i]), "y": float(log_control[i])} for i in range(len(log_samples))]
     comp_labels = [geneNames[i] for i in range(len(comp))]
 
-    volcano = [{"x": log2FC[i], "y": p[i]} for i in range(len(log2FC))]
+    volcano = [{"x": float(log2FC[i]), "y": float(p[i])} for i in range(len(log2FC))]
     volcano_labels = [geneNames[i] for i in range(len(volcano))]
 
     matrix_colors = linear_color_map(results).tolist()

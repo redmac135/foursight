@@ -1,4 +1,13 @@
-FROM python:3.8.10
+FROM python:3.11.9-slim
+
+# Install system dependencies for psycopg2 and build tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    python3-dev \
+    gcc \
+    libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # install psycopg2 dependencies
 RUN apt-get update && apt-get install -y
@@ -15,8 +24,6 @@ ENV PYTHONUNBUFFERED=1
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-COPY ./prodrequirements.txt .
-RUN pip install -r prodrequirements.txt
 
 # copy entrypoint.sh
 COPY ./docker-entrypoint.sh /
