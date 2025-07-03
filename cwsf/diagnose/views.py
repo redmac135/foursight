@@ -5,7 +5,9 @@ import re
 from .forms import DiagnoseForm, GenelabForm
 from django.views.generic import View
 from django.http.response import HttpResponse
-from cwsf.settings import BASE_DIR
+from django.conf import settings
+
+BASE_DIR = settings.BASE_DIR
 
 import os
 import mimetypes
