@@ -17,14 +17,23 @@ https://github.com/redmac135/foursight.git
 cd foursight
 ```
 
-Build Docker image
+Build Docker image using Dockerfile
 
 ```bash
-docker build
+docker buildx build -t foursight-app .
+```
+
+Create .env file using the format
+```
+PORT=<port number>
+SECRET_KEY=<django secret key>
+ALLOWED_HOSTS=localhost,127.0.0.1,example.com
+CSRF_TRUSTED_ORIGINS=http://localhost,http://127.0.0.1,https://example.com
 ```
 
 Start the server and run Docker image
 
 ```bash
-docker run
+docker run --env-file .env -p PORT:PORT foursight-app
 ```
+*Note: replace PORT with the port you choose in the .env*
