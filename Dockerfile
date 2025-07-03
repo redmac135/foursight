@@ -24,6 +24,4 @@ RUN chmod +x /docker-entrypoint.sh
 
 COPY ./cwsf .
 
-RUN python manage.py collectstatic --noinput
-
 ENTRYPOINT [ "bash", "/docker-entrypoint.sh" ]
