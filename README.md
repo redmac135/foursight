@@ -17,12 +17,6 @@ https://github.com/redmac135/foursight.git
 cd foursight
 ```
 
-Build Docker image using Dockerfile
-
-```bash
-docker buildx build -t foursight-app .
-```
-
 Create .env file using the format
 ```
 PORT=<port number>
@@ -31,9 +25,8 @@ ALLOWED_HOSTS=localhost,127.0.0.1,example.com
 CSRF_TRUSTED_ORIGINS=http://localhost,http://127.0.0.1,https://example.com
 ```
 
-Start the server and run Docker image
+Start the server with docker compose
 
 ```bash
-docker run --env-file .env -p PORT:PORT foursight-app
+docker compose up -d
 ```
-*Note: replace PORT with the port you choose in the .env*

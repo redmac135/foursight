@@ -9,6 +9,6 @@ python manage.py collectstatic --noinput
 python manage.py migrate
 
 # run the server
-python manage.py runserver 0.0.0.0:$PORT
+python manage.py runserver 0.0.0.0:8080
 
 exec "$@"
